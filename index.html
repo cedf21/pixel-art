@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Art</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        html,body{
+            height:100%;
+        }
+        .botoes{
+            text-align: center;
+            
+            
+        }
+        button{
+            /* background:red; */
+            height:20px;
+            width:20px;
+            border:none;
+            background:white;
+            
+            
+        }
+        button:focus{
+            outline: none;
+        }
+   
+        </style>
+</head>
+<body>
+
+    
+    <div class='botoes' id='botoes'>
+        
+        
+        
+    </div>
+
+    <script>
+        
+        var cor = "#000";
+        var toggle = 1;
+
+        for(var i =0; i < 50 ; i++){
+            var botoes = "";
+            for(x = 0; x < 100; x++){
+                botoes += "<button onmouseover='changeColor(this)'></button>";
+            }
+            botoes += "";
+            
+            document.getElementById('botoes').innerHTML+=botoes;
+        }
+        
+        
+        function gerar_cor(opacidade = 1) {
+            let r = Math.random() * 255;
+            let g = Math.random() * 255;
+            let b = Math.random() * 255;
+   
+            return `rgba(${r}, ${g}, ${b}, ${opacidade})`;
+        }
+        
+        window.onload = function(){
+            for(i = 0; i <=document.getElementsByTagName("button").length -1;i++){
+                document.getElementsByTagName("button")[i].addEventListener("click",function(){
+                    this.style.background = cor;
+                })
+
+            }
+
+            document.onkeypress =  function (key) {
+                if(key.key == "g"){
+                    cor = prompt("Digita uma nova cor em hexaDecimal")
+                    
+
+                }else{
+                    toggle = 0;
+                }
+               
+            } 
+            document.onkeyup =  function () {
+                toggle =1;
+            } 
+        }
+        
+        function changeColor(a){
+            if(toggle == 0){
+                a.style.background = cor;
+            }
+            
+        }
+
+
+
+    
+        
+        
+    </script>
+</body>
+</html>
